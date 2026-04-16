@@ -1,0 +1,37 @@
+# Copy this file to terraform.tfvars and fill in your values before deploying.
+# terraform.tfvars is gitignored — never commit it.
+
+# ─── REQUIRED ────────────────────────────────────────────────────────────────
+
+# ACM certificate ARN — must be in the same region as your deployment
+certificate_arn = "arn:aws:acm:us-east-2:<your-account-id>:certificate/<certificate-id>"
+
+# Route 53 hosted zone ID for your domain
+hosted_zone_id = "<your-hosted-zone-id>"
+
+# Your registered domain name
+domain_name = "example.com"
+
+# Email to receive CloudWatch alarm notifications (leave empty to skip)
+alert_email = "you@example.com"
+
+# ─── ENVIRONMENT ─────────────────────────────────────────────────────────────
+
+environment = "dev"   # dev | staging | prod
+
+# ─── NETWORKING ──────────────────────────────────────────────────────────────
+
+# nat_gateway_count = 1   # Use 1 for dev/staging. Use 2 for production HA.
+
+# ─── RDS ─────────────────────────────────────────────────────────────────────
+
+# instance_class              = "db.t3.micro"   # Upgrade for production
+# rds_multi_az                = false           # Set true for production
+# rds_backup_retention_period = 7
+# rds_deletion_protection     = true
+
+# ─── ECS ─────────────────────────────────────────────────────────────────────
+
+# ecs_min_capacity = 2   # Keep at 2+ for HA across AZs
+# ecs_max_capacity = 4
+# wordpress_image  = "wordpress:php8.3-apache"
